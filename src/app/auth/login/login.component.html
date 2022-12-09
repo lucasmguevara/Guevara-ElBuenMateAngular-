@@ -1,0 +1,62 @@
+<div class="main">
+    <section class="sign-in">
+        <div class="container">
+            <div class="signin-content">
+                <div class="signin-image">
+                    <figure><img src="../../../assets/images/mate.jpg" alt="sing up image"></figure>
+                </div>
+
+                <form id="login-form" [formGroup]="formLogin" *ngIf="formLogin" (ngSubmit)="iniciarSesion()" class="register-form">
+                    <h2 class="form-title">Iniciar Sesión</h2>
+                    <div class="mb-20">
+                        <div class="form-group">
+                            <label for="username"><i class="fa fa-user"></i></label>
+                            <input type="text" formControlName="username" name="username" id="username" maxlength="30" placeholder="Usuario" required/>
+                        </div>
+                        <div class="text-danger text-left pt-5">
+                            <span *ngIf="this.formLogin.get('username')!.errors?.['required'] && this.formLogin.get('username')!.touched" class="text-danger">
+                                (Campo obligatorio)
+                              </span>
+                            <span *ngIf="this.formLogin.get('username')!.errors?.['maxlength'] && this.formLogin.get('username')!.touched" class="text-danger">
+                                (Debe tener como máximo 30 caracteres)
+                              </span>
+                            <span *ngIf="this.formLogin.get('username')!.errors?.['minlength'] && this.formLogin.get('username')!.touched" class="text-danger">
+                                (Debe tener como mínimo 5 caracteres)
+                              </span>
+                        </div>
+                    </div>
+
+                    <div class="mb-20">
+                        <div class="form-group">
+                            <label for="password"><i class="fa-solid fa-lock"></i></label>
+                            <input type="password" formControlName="password" name="password" id="password" maxlength="30" placeholder="Contraseña" required/>
+                        </div>
+                        <div class="text-danger text-left pt-5">
+                            <span *ngIf="this.formLogin.get('password')!.errors?.['required'] && this.formLogin.get('password')!.touched" class="text-danger">
+                                (Campo obligatorio)
+                              </span>
+                            <span *ngIf="this.formLogin.get('password')!.errors?.['maxlength'] && this.formLogin.get('password')!.touched" class="text-danger">
+                                (Debe tener como máximo 30 caracteres)
+                              </span>
+                            <span *ngIf="this.formLogin.get('password')!.errors?.['minlength'] && this.formLogin.get('password')!.touched" class="text-danger">
+                                (Debe tener como mínimo 5 caracteres)
+                              </span>
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group form-button mb-20">
+                        <button type="submit" ame="signin" id="signin" [disabled]="this.formLogin.invalid" class="btn">Ingresar</button>
+                    </div>
+
+                    <div class="form-group text-center">
+                        <a href="/home"><img src="../../../assets/images/logo_completo.png" alt="logo" width="200"></a>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </section>
+
+</div>
